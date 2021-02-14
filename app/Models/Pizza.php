@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pizza extends Model
 { 
+
     /**
      * Set the pizza's toppings.
      *
@@ -19,7 +20,7 @@ class Pizza extends Model
     }
     
     protected $cast = [
-        'toppings' => 'array',
+        'toppings' => 'array'
     ];  
     use HasFactory;
 }

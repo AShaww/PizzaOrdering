@@ -20,17 +20,15 @@ class PizzaController extends Controller
     }
 
     public function show($id) { 
-        
         $pizza = Pizza::findOrFail($id);
-
         return view('pizzas.show', ['pizza' => $pizza]);
     }
 
-    public function create(){
+    public function create() {
         return view('pizzas.create');
     }
 
-    public function store(){
+    public function store() {
 
         $pizza = new Pizza();   //New instance of the Pizza
 
@@ -39,13 +37,18 @@ class PizzaController extends Controller
         $pizza->base = request('base'); 
         $pizza->toppings = request('toppings');
 
-        $pizza->save();
+        $pizza->save(); 
         // error_log(request('name'));  Line 36 instead of this
         // error_log(request('type'));
         // error_log(request('base'));
         // error_log($pizza);  //Outputs an object of selected items...
-        
+        return redirect('/pizzas')->with('mssg', 'Thanks for your order. Your order number is: '.$pizza->id);
+    }
+    public function destroy($id) {
+        $pizza = Pizza::findOrFail($id);
+        $pizza->delete();#
 
-        return redirect('/')->with('mssg', 'Thanks for your order');
+        return redirect('/pizzas');
+
     }
 }
