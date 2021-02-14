@@ -47,7 +47,7 @@
                                 </li>
                             @endif
                             
-                            @if (Route::has('register'))
+                            @if (Route::has('register'))            //Doesnt work as in web.php i have turned it to false. So if user has login then no registration can be done.
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>

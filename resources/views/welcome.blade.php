@@ -22,7 +22,7 @@
             The North's Best Pizza  <!-- title of the project -->
         </div>
         <p class="mssg">{{ session('mssg') }}</p>
-        <a href="/pizzas/create"> Order a Pizza!</a>
+        <a href="{{ route('pizzas.index') }}"> Order a Pizza!</a>   //using named routes to find and use routes
     </div>
 
 @endsection

@@ -14,7 +14,7 @@
         </li>
         @endforeach
     </ul>
-    <form action="/pizzas/{{ $pizza->id }}" method="POST">
+    <form action="route('pizza.destroy', $pizza->id)" method="POST">    //using named routes to find and use routes
     @csrf 
    <button>Complete Order</button>
     @method('DELETE')

@@ -18,11 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pizzas', [PizzaController::class, 'index']);        //These are routes
-Route::get('/pizzas/create', [PizzaController::class, 'create']);
-Route::post('/pizzas', [PizzaController::class, 'store']);
-Route::get('/pizzas/{id}', [PizzaController::class, 'show']);    // CCan organise this moved line 3 (create to line 2);
-Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy']);
-Auth::routes();
+Route::get('/pizzas', [PizzaController::class, 'index'])->name('pizzas.index')->middleware('auth');        //These are routese
+Route::get('/pizzas/create', [PizzaController::class, 'create'])->name('pizzas.create');
+Route::post('/pizzas', [PizzaController::class, 'store'])->name('pizzas.store');
+Route::get('/pizzas/{id}', [PizzaController::class, 'show'])->name('pizzas.show')->middleware('auth');    // CCan organise this moved line 3 (create to line 2);
+Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])->name('pizzas.destroy')->middleware('auth');
+
+Auth::routes([
+    'register' => false
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
